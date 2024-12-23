@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Winter Solstice Celebrations Around the World</title>
+    <meta name="description" content="CSS Art representing the December month, featuring a snow globe with a tree and snowfall.">
+    
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: radial-gradient(circle, #1e3c72, #2a5298);
+        font-family: Arial, sans-serif;
+        color: white;
+      }
+  
+      .snow-globe {
+        position: relative;
+        width: 200px;
+        height: 200px;
+      }
+  
+      .glass {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.5), 0 4px 10px rgba(0, 0, 0, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+  
+      .tree {
+        width: 40px;
+        height: 60px;
+        background: linear-gradient(to top, #228b22, #2ecc71);
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        box-shadow: 0 0 20px #2ecc71, 0 0 30px rgba(0, 255, 0, 0.4);
+        z-index: 1;
+      }
+  
+      .snow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(white 0.5px, transparent 1px);
+        background-size: 10px 10px;
+        animation: snowfall 5s linear infinite;
+      }
+  
+      @keyframes snowfall {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 100%;
+        }
+      }
+  
+      .base {
+        width: 120px;
+        height: 40px;
+        background: #8b4513;
+        border-radius: 10px;
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        z-index: 0;
+      }
+      
+      /* Snowflake random size and opacity */
+      .snowflake {
+        position: absolute;
+        top: 0;
+        background-color: white;
+        border-radius: 50%;
+        animation: snow 10s linear infinite;
+      }
+
+      @keyframes snow {
+        0% {
+          transform: translateY(0) scale(0.5);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) scale(1.5);
+          opacity: 0.5;
+        }
+      }
+  
+    </style>
+</head>
+<body>
+
+    <div class="snow-globe">
+        <div class="glass">
+          <div class="tree"></div>
+          <div class="snow"></div>
+        </div>
+        <div class="base"></div>
+    </div>
+
+    <!-- Optional: Add random snowflakes with JavaScript -->
+    <script>
+        const snowGlobe = document.querySelector('.snow-globe');
+        for (let i = 0; i < 100; i++) {
+            let snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            let size = Math.random() * 3 + 2;
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            snowflake.style.left = `${Math.random() * 100}%`;
+            snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            snowGlobe.appendChild(snowflake);
+        }
+    </script>
+
+</body>
+</html>
